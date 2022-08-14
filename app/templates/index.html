@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head> 
+    <meta charset="utf-8">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.2/dist/flowbite.min.css" />
+    <script src="https://kit.fontawesome.com/f8c4ebc5fa.js" crossorigin="anonymous"></script>
+    <title>{% block title %}Index Page{% endblock %}</title>
+    {% block style%}{% endblock%}
+  </head>
+  <body class=" bg-gray-200 text-gray-700 text-sm font-medium"> 
+    <nav class=" w-full bg-gray-800 text-gray-100 text-base font-medium px-12 py-3" >
+        <div class=" flex justify-between">
+          <span class="">
+            <a class="" href="{{ url_for('welcome_page') }}">Schedular</a>
+          </span>
+          <ul class="flex gap-12">
+            {% if current_user.is_authenticated %}
+            
+            <li class="">
+              <a class="" href="/about">Welcome {{ current_user.username }}</a>
+            </li>
+            {% endif%}
+          </ul>
+          <ul class="flex gap-12">
+            {% if current_user.is_authenticated %}
+            <li class="">
+              <a class="" aria-current="page" href="{{ url_for('home_page') }}">Home</a>
+            </li>
+            <li class="">
+              <a class="" href="/about">About</a>
+            </li>
+            <li class="">
+              <a class="" href="{{ url_for('logout_page') }}">Sign-Out</a>
+            </li>
+            
+            {%else%}
+            <li class="">
+              <a class="" href="{{ url_for('register_page') }}">Sign-Up</a>
+            </li>
+            <li class="">
+              <a class="" href="{{ url_for('login_page') }}">Sign-In</a>
+            </li>
+            {% endif%}
+            </ul>
+        </div>
+      </nav>
+      {% with messages = get_flashed_messages(with_categories=true)%}
+        {% if messages%}
+          {% for  category, message in messages %}
+            {% if category == 'danger' %}
+            <p class="w-full bg-red-200 text-red-900 p-3 text-center text-base font-medium">
+              {{ message }}
+            </p>
+            {% else %}
+              <p class="w-full bg-blue-200 text-blue-900 p-3 text-center">{{ message }}</p>
+            {% endif %}
+            
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    <div>
+      {% block content %}
+      {% endblock %}
+    </div>
+    <script src="https://unpkg.com/flowbite@1.5.2/dist/flowbite.js"></script>
+  </body>
+</html>

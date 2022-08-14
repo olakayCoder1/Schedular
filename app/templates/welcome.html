@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+{% block title%}Schedular{% endblock%}
+{% block content %}
+<div class=" w-full h-full text-center">
+    <h1 class=" text-6xl font-extrabold my-10">Welcome to Schedular</h1>
+    <p class=" text-xl font-bold">Keep track of your daily plan with a simple to-do list</p>
+
+    <a href="{{ url_for('register_page') }}" ><button class=" px-8 py-3 rounded-md bg-blue-700 text-xl font-bold text-gray-100 hover:bg-blue-800 my-3">Get Started</button></a>
+
+</div>
+{% endblock%}
+   

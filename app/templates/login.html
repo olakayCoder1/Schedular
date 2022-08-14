@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+{% block title%}Login{% endblock%}
+{% block style%}
+{% endblock%}
+{% block content %}
+
+
+<form method="post" class="w-full max-w-[400px] mx-auto mt-12 p-6 border shadow-md">
+  <div class=" text-center my-4">
+    <h2 class=" text-blue-700 drop-shadow-lg shadow-black text-3xl font-mold text-cente">Welcome back</h2>
+  </div>
+  {{ form.hidden_tag()}}
+  {{ form.username.label(class="block mb-2 text-sm font-medium") }}
+  <div class="flex mb-3">
+      <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300">
+          @
+      </span>
+      {{ form.username(placeholder="username" , class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 ")}}
+  </div>
+  <div class=" mb-3">
+      {{ form.password.label(class="block mb-2 text-sm font-medium text-gray-900") }}
+      {{ form.password(placeholder="********",class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  ")}}
+  </div>
+  {{ form.submit(class="my-3 py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-100 focus:outline-none bg-blue-800 rounded-lg border border-gray-200 hover:bg-blue-900  focus:z-10 focus:ring-4 focus:ring-blue-200 cursor-pointer")}}
+  
+  <p class="mt-2"><span class="font-medium">Need an account?</span> <a href="{{ url_for('register_page') }}" class=" text-blue-700 hover:underline underline-offset-1" >Sign-Up.</a></p>
+  
+  </form>
+{% endblock %}
+
+
