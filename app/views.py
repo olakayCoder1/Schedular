@@ -76,7 +76,6 @@ def home_page():
 @app.route("/delete/<int:id>")
 def delete_task_page(id):   
     task_to_delete = Task.query.filter_by(id=int(id)).first()
-    print(task_to_delete)
     db.session.delete(task_to_delete)
     db.session.commit()
     return redirect(url_for('home_page'))
