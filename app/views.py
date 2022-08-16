@@ -1,8 +1,8 @@
 from flask import flash , get_flashed_messages , render_template , request , redirect , url_for
 from app import app , db , login_manager
 from app.forms import RegisterForm , LoginForm
-from app.models import User
-from flask_login import login_user , logout_user , login_required
+from app.models import User , Task
+from flask_login import login_user , logout_user , login_required , current_user
 
 
 @app.route("/")
@@ -63,14 +63,26 @@ def logout_page():
 
 
 
-@app.route("/home")
+@app.route("/home", methods=['GET','POST'])
 def home_page():
-    return render_template('home.html')
+    if request.method == 'POST':
+        description = request.form['description']
+        print(description)
+    print(current_user.id)
+    tasks = Task.query.all()
+    return render_template('home.html', tasks=tasks )
 
 
+@app.route("/delete/<int:id>")
+def delete_task_page(id):   
+    task_to_delete = Task.query.filter_by(id=int(id)).first()
+    print(task_to_delete)
+    db.session.delete(task_to_delete)
+    db.session.commit()
+    return redirect(url_for('home_page'))
 
 
-
+  
 @app.route("/about")
 def about_page():
     return render_template('about.html')

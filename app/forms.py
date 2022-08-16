@@ -18,11 +18,13 @@ class RegisterForm(FlaskForm):
             raise ValidationError('Email already exist, try a different email')
 
     username = StringField('Username', validators=[DataRequired(), Length(min=3)])
-    email = EmailField('Your Email', validators=[DataRequired(), Email() ])
+    email = EmailField('Your Email', validators=[DataRequired(), Email()])
     password1 = PasswordField('Password', validators=[DataRequired()])
     password2 = PasswordField('Confirm Password', validators=[EqualTo('password1')])
     submit = SubmitField('Sign-Up')
-
+#I NEED TO INSTALL EMAIL email_validation for EMAIL VALIDATION SUPPORT
+#I NEED TO INSTALL EMAIL email_validation for EMAIL VALIDATION SUPPORT
+#I NEED TO INSTALL EMAIL email_validation for EMAIL VALIDATION SUPPORT
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
