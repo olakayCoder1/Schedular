@@ -18,7 +18,7 @@
             {% if current_user.is_authenticated %}
             
             <li class="">
-              <a class="" href="/about">Welcome {{ current_user.username }}</a>
+              <a href="{{ url_for('account_page') }}">Welcome {{ current_user.username }}</a>
             </li>
             {% endif%}
           </ul>
@@ -28,7 +28,7 @@
               <a class="" aria-current="page" href="{{ url_for('home_page') }}">Home</a>
             </li>
             <li class="">
-              <a class="" href="/about">About</a>
+              <a class="" href="{{ url_for('account_page') }}">Account</a>
             </li>
             <li class="">
               <a class="" href="{{ url_for('logout_page') }}">Sign-Out</a>

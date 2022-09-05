@@ -1,5 +1,44 @@
 {% extends 'index.html' %}
 {% block title%}About{% endblock%}
 {% block content %}
-<h1>About page</h1>
+
+
+
+<form method="post" class="w-[600px] mx-auto">
+    
+    <div class=" text-center my-4">
+      <h2 class=" text-blue-700 drop-shadow-lg shadow-black text-3xl font-mold text-cente">Account</h2>
+    </div>
+    {{ form.hidden_tag()}}
+    <!-- {{ form.username.label(class="block mb-2 text-sm font-medium") }} -->
+    <div class="flex mb-3">
+        <span class="inline-flex items-center px-3 text-sm text-gray-900 bg-gray-200 rounded-l-md border border-r-0 border-gray-300">
+            @
+        </span>
+        {{ form.username(placeholder="username" , class="rounded-none rounded-r-lg bg-gray-50 border text-gray-900 focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm border-gray-300 p-2.5 ")}}
+    </div>
+    <div class="relative mb-3">
+        <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+        </div>
+        {{ form.email(placeholder="Email address", class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  ")}}
+    </div>
+    {{ form.submit(class="my-3 py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-100 focus:outline-none bg-blue-800 rounded-lg border border-gray-200 hover:bg-blue-900  focus:z-10 focus:ring-4 focus:ring-blue-200 cursor-pointer")}}
+    
+</form>
+
+<hr>
+
+<form  method="post" class="w-[600px] mx-auto" action="{{ url_for('reset_password') }}">
+    <h2 class=" text-xl font-bold my-4">Change password</h2>
+    <div class="">
+        <label for="old_password" class="block mb-2 text-sm font-medium text-gray-900 ">Current password</label>
+        <input type="password" name="old_password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  " required/>
+        <label for="new_password" class="block mb-2 text-sm font-medium text-gray-900 ">New password</label>
+        <input type="password" name="new_password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  " required/>
+        <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 ">Confirm New password</label>
+        <input type="password" name="confirm_password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  " required/>
+      </div>
+      <button type="submit" class="my-3 py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-100 focus:outline-none bg-blue-800 rounded-lg border border-gray-200 hover:bg-blue-900  focus:z-10 focus:ring-4 focus:ring-blue-200 cursor-pointer" >Reset Password</button>
+</form>
 {% endblock%}
