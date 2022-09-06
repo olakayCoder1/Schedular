@@ -122,7 +122,7 @@ def reset_password():
         else:
             flash(f"There was an error updating account : { 'Confirm password did not match new password' }", category='danger')
     else:
-        flash(f"There was an error updating account : {'Current password is not current' }", category='danger')
+        flash(f"There was an error updating account : {'Current password is not correct' }", category='danger')
     
     return redirect(url_for('account_page'))
 
